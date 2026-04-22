@@ -1,0 +1,11 @@
+@HouseRentingSystemApi_HostAddress = http://localhost:5230
+
+GET {{HouseRentingSystemApi_HostAddress}}/api/House/All
+Accept: application/json
+
+###
+
+GET {{HouseRentingSystemApi_HostAddress}}/api/House/me
+Accept: application/json
+
+###
