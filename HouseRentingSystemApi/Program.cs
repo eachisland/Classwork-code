@@ -108,4 +108,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-await app.RunAsync();
+await app.RunAsync(app.Lifetime.ApplicationStopping);

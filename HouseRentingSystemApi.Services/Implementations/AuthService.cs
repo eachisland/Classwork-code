@@ -11,8 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
     
 public class AuthService(
-	UserManager<AppUser>
-	userManager, IConfiguration config) : IAuthService
+	UserManager<AppUser> userManager,
+	IConfiguration config) : IAuthService
 {
     public async Task<AuthResult> LoginAsync(AuthModel model)
 	{
