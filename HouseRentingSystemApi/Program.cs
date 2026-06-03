@@ -1,5 +1,6 @@
 using System.Text;
 using HouseRentingSystemApi.Data;
+using HouseRentingSystemApi.Data.DataConstants;
 using HouseRentingSystemApi.Data.Entities;
 using HouseRentingSystemApi.Middlewares;
 using HouseRentingSystemApi.Services.Contracts;
@@ -83,6 +84,15 @@ var data = scope
 await data
     .Database
     .MigrateAsync(app.Lifetime.ApplicationStopping);
+
+var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+foreach (var role in new[] { RoleConstants.Agent, RoleConstants.Client })
+{
+    if (!await roleManager.RoleExistsAsync(role))
+    {
+        await roleManager.CreateAsync(new IdentityRole(role));
+    }
+}
 
 if (app.Environment.IsDevelopment())
 {

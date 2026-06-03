@@ -15,4 +15,9 @@ public class AuthModel
 	[Required]
 	[EmailAddress]
 	public string Email { get; set; } = string.Empty;
+
+	/// <summary>
+	/// Role to assign on registration. Must be "Agent" or "Client". Defaults to "Client".
+	/// </summary>
+	public string Role { get; set; } = "Client";
 }
